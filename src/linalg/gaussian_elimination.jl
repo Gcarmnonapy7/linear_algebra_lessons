@@ -7,6 +7,7 @@ Solve the linear system **A x = b** with Gaussian elimination
 `A` must be a square `Float64` matrix and `b` a real vector of
 compatible length.  Returns the solution vector `x`.
 """
+module GaussianElimination
 function gauss_elimination(A::Matrix{Float64},b::Vector{Float64},tol::Float64=1e-10)
     #Gaussian elimitation method
     # N is the number of rows and columns in A
