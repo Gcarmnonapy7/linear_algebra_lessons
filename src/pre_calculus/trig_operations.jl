@@ -12,9 +12,13 @@ function factorial(n::Int)
     return result 
 end
 
-function sine(angle::Float64,terms::Int=10)
-    # Calculate sine using Taylor series expansion
-    sine_value = 0.0
-    
-    for n in 0:terms-1
-        term = ()
+function abs(x::Number)
+    # Returns the absolute value of a number
+    return x < 0 ? -x : x
+end
+
+#Implementation sin and cos using Taylor series expansion
+function tan(x::Number)
+    # Returns the tangent of x in radians
+    return sin(x) / cos(x)
+end
