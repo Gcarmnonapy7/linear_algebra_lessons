@@ -40,7 +40,9 @@ function gauss_elimination(A::Matrix{Float64},b::Vector{Float64},tol::Float64=1e
             end
             if max_row != i 
                 #Swap the current max_row with the current row (i)
-                aug[i,:] , aug[max_row,:] = aug[max_row,:],aug[i,:]
+                temp = copy(aug[i,:])
+                aug[i,:] = aug[max_row,:]
+                aug[max_row,:] = temp
             end
             abs(aug[i,i]) < tol && error("Matrix is singular or nearly singular.")
 
@@ -66,6 +68,7 @@ function gauss_elimination(A::Matrix{Float64},b::Vector{Float64},tol::Float64=1e
         end
         return x_vector
 end
+end # module GaussianElimination
 
 
     
