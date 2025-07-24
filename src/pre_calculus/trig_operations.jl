@@ -22,3 +22,5 @@ function tan(x::Number)
     # Returns the tangent of x in radians
     return sin(x) / cos(x)
 end
+
+end

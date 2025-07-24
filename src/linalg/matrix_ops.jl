@@ -27,8 +27,11 @@ function matrix_inverse(A::AbstractMatrix)
     if size(A,1) != size(A,2)
         error("To get a inverse the current matrix needs to be a square")
     end
-    if det(A) = 0 
+
+    if det(A) == 0 
         error("If you have a determinant of 0, the matrix is singular and cannot be inverted")
     end
     return inv(A)
+end
+
 end
