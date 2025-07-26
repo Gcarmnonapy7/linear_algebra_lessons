@@ -17,10 +17,7 @@ function matrix_multiplication(A::AbstractMatrix,B::AbstractMatrix)
     return A * B
 end
 
-
-
 #Block matrix multiplication for large matrices
-
 # Inverse of a matrix
 
 function matrix_inverse(A::AbstractMatrix)
@@ -33,5 +30,17 @@ function matrix_inverse(A::AbstractMatrix)
     end
     return inv(A)
 end
+
+#Getting the initial matrix by the inverse of the matrix ]
+function matrix_initial(A::AbstractMatrix)
+    if size(A,1) != size(A,2)
+        error("Needs to be a square matrix")
+    end
+    if det(A) == 0
+        error("The determinant of the matrix cannot be zero")
+    end
+    return I(size(A,1)) #Returns the indentity matrix with the same dimensions as A
+end 
+
 
 end
