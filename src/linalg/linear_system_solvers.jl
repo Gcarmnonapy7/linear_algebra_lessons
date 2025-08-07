@@ -7,7 +7,8 @@ Solve the linear system **A x = b** with Gaussian elimination
 `A` must be a square `Float64` matrix and `b` a real vector of
 compatible length.  Returns the solution vector `x`.
 """
-module GaussianElimination
+module LinearSystemSolvers
+
 function gauss_elimination(A::Matrix{Float64},b::Vector{Float64},tol::Float64=1e-10)
     #Gaussian elimitation method
     # N is the number of rows and columns in A
@@ -68,7 +69,20 @@ function gauss_elimination(A::Matrix{Float64},b::Vector{Float64},tol::Float64=1e
         end
         return x_vector
 end
-end # module GaussianElimination
+
+function matrix_inverse(A::AbstractMatrix)
+    #Implement the matrix inverse function by scratch
+    if size(A,1) != size(A,2)
+        error("To get a inverse the current matrix needs to be a square")
+    end
+
+    if det(A) == 0 
+        error("If you have a determinant of 0, the matrix is singular and cannot be inverted")
+    end
+    return inv(A)
+end
+
+end 
 
 
     
