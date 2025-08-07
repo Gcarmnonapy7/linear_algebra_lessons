@@ -1,5 +1,5 @@
 #Matrix operations module from scratch
-module MatrixOps
+module CoreOperations
 
 function matrix_addition(A::AbstractMatrix, B::AbstractMatrix)
     # Matrix addition
@@ -16,31 +16,6 @@ function matrix_multiplication(A::AbstractMatrix,B::AbstractMatrix)
     end
     return A * B
 end
-
-#Block matrix multiplication for large matrices
-# Inverse of a matrix
-
-function matrix_inverse(A::AbstractMatrix)
-    if size(A,1) != size(A,2)
-        error("To get a inverse the current matrix needs to be a square")
-    end
-
-    if det(A) == 0 
-        error("If you have a determinant of 0, the matrix is singular and cannot be inverted")
-    end
-    return inv(A)
-end
-
-#Getting the initial matrix by the inverse of the matrix ]
-function matrix_initial(A::AbstractMatrix)
-    if size(A,1) != size(A,2)
-        error("Needs to be a square matrix")
-    end
-    if det(A) == 0
-        error("The determinant of the matrix cannot be zero")
-    end
-    return I(size(A,1)) #Returns the indentity matrix with the same dimensions as A
-end 
 
 function transpose_matrix(A:AbstractMatrix)
     rows,cols = size(A)
@@ -76,4 +51,13 @@ function zeros_matrix(rows::Int,cols::Int)
     return zero_matrix
 end
 
+function dot_product(A::AbstractVector, B::AbstractVector)
+    # Dot product of two vectors
+    if length(A) != length(B)
+        error("Vectors A and B must have the same length.")
+    end
+    return sum(A .* B)
+end
+
+# Cross products implementation
 end
